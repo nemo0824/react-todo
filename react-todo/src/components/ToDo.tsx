@@ -1,5 +1,5 @@
 import { useSetRecoilState } from "recoil";
-import { IToDo, toDoState } from "../atom";
+import { Categories, IToDo, toDoState } from "../atom";
 
 function ToDo({text,category, id}:IToDo){
     const setToDos = useSetRecoilState(toDoState)
@@ -19,10 +19,10 @@ function ToDo({text,category, id}:IToDo){
     return (
         <li>
             {text} 
-            {category !== "TO_DO" && <button onClick={() => onClick("TO_DO")}>ToDo</button>}
+            {category !== Categories.TO_DO && <button onClick={() => onClick(Categories.TO_DO)}>ToDo</button>}
             {/* 여기서 onClick에서 바로 담아주지않는이유 인자를 못가져가기때문에 함수형으로 ()=> 인자를 넘김 */}
-            {category !== "DOING"&&<button onClick={() => onClick("DOING")}>Doing</button>}
-            {category !== "DONE" &&<button onClick={() => onClick("DONE")}>Done</button>}
+            {category !== Categories.DOING&&<button onClick={() => onClick(Categories.DOING)}>Doing</button>}
+            {category !== Categories.DONE &&<button onClick={() => onClick(Categories.DONE)}>Done</button>}
         
         </li>
     )
